@@ -1,0 +1,10 @@
+div#banner{
+  background:#000 url("http://www.careerealism.com/wp-content/uploads/2012/12/career-management-lazy.jpg") center center;
+  background-size:cover;
+}
+
+div#region{
+  display:flex;
+  justify-content:space-between;
+}
+
