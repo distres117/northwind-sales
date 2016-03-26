@@ -1,0 +1,22 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/distres117/northwind-sales",
+  "authors": [
+    "distres117 <omcrobbie@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "requirejs": "^2.2.0"
+  }
+}

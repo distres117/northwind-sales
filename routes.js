@@ -5,7 +5,7 @@ router.param('id', function(req,res,next,id){
    Employee.findById(id).then(function(employee){
       req.employee = employee;
       next();
-   },next); 
+   },next);
 });
 
 router.route('/')
@@ -15,7 +15,7 @@ router.route('/')
         },next);
     })
     .post(function(req,res,next){
-        Employee.create({name: req.body.name}).then(function(emp){
+        Employee.create({name: req.body.name, regions: req.body.regions}).then(function(emp){
             res.json(emp);
         }, next);
     });
@@ -33,7 +33,7 @@ router.route('/:id')
     })
     .delete(function(req,res,next){
         req.employee.remove().then(function(){
-           res.sendStatus(204); 
+           res.sendStatus(204);
         }, next);
     });
 

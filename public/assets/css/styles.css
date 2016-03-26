@@ -8,3 +8,6 @@ div#region{
   justify-content:space-between;
 }
 
+.panel{
+  border-radius: 10px;
+}

@@ -11,10 +11,10 @@
 
 <body>
     <div class="jumbotron" id="banner">
-        <h1 class="bg-primary">Northwind Sales Team</h1>
+        <h1 class="bg-primary"> Northwind Sales Team</h1>
         <p></p>
     </div>
-    <div class="container">
+    <div class="container" ng-controller="MainCtrl">
         <div class="col-lg-4 col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -23,8 +23,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group has-error">
-                                <input type="text" placeholder="name">
-                                <button class="btn btn-primary pull-right" type="button">+Add </button>
+                                <input type="text" placeholder="name" ng-model="newEmployee.name">
+                                <button class="btn btn-primary pull-right" type="button" ng-click="addNew()">+Add </button>
                             </div>
                         </div>
                     </div>
@@ -32,56 +32,34 @@
                 <div class="panel-footer">
                     <div class="row" id="region_btns">
                         <div class="col-md-12" id="region">
-                            <button class="btn btn-info btn-sm" type="button">North </button>
-                            <button class="btn btn-info btn-sm" type="button">South </button>
-                            <button class="btn btn-info btn-sm" type="button">East </button>
-                            <button class="btn btn-info btn-sm" type="button">West </button>
+                            <button ng-repeat="(key,value) in regions" ng-click="toggle(key)" ng-class="{active: newEmployee.regions[key]}" class="btn btn-default btn-sm" type="button">{{value}}</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-4 col-md-12" ng-repeat="employee in employees">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3 class="panel-title" id="panel-title">Name goes here<button class="btn btn-danger btn-sm pull-right" type="button" id="delete-btn">Delete </button></h3>
+                    <h3 class="panel-title" ng-click="remove(employee._id)" id="panel-title">{{employee.name}}<button class="btn btn-danger btn-sm pull-right" type="button" id="delete-btn">Delete </button></h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
                     <div class="row" id="region_btns">
                         <div class="col-md-12" id="region">
-                            <button class="btn btn-info btn-sm" type="button">North </button>
-                            <button class="btn btn-info btn-sm" type="button">South </button>
-                            <button class="btn btn-info btn-sm" type="button">East </button>
-                            <button class="btn btn-info btn-sm" type="button">West </button>
+                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('n') > -1}" type="button">North </button>
+                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('s') > -1}" type="button">South </button>
+                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('e') > -1}" type="button">East </button>
+                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('w') > -1}" type="button">West </button>
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer"></div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title" id="panel-title">Name goes here<button class="btn btn-danger btn-sm pull-right" type="button" id="delete-btn">Delete </button></h3>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-body">
-                    <div class="row" id="region_btns">
-                        <div class="col-md-12" id="region">
-                            <button class="btn btn-info btn-sm" type="button">North </button>
-                            <button class="btn btn-info btn-sm" type="button">South </button>
-                            <button class="btn btn-info btn-sm" type="button">East </button>
-                            <button class="btn btn-info btn-sm" type="button">West </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer"></div>
             </div>
         </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script data-main="/js/app.js" src="/bower_components/requirejs/require.js"></script>
 </body>
 
 </html>

@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "TESTING=true nodemon --exec mocha",
-    "start": "nodemon server.js"
+    "dev": "nodemon --ignore '/public/*' server.js",
+    "seed": "node db/seed.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bower": "^1.7.7",
     "express": "^4.13.4",
     "mongoose": "^4.4.10",
     "morgan": "^1.7.0"
