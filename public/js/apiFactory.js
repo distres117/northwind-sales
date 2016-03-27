@@ -8,16 +8,8 @@ define(['angular'], function(angular){
       });
     }
 
-    function addRegion(id, region){
-      return $http.put('/api/'+ id, {region: region}).then(function(res){
-        return res.data;
-      });
-    }
-
-    function removeRegion(id, region){
-      return $http.put('/api/'+ id + '?remove=true', {region: region}).then(function(res){
-        return res.data;
-      });
+    function setRegion(id, region){
+      return $http.put('/api/'+ id, {region: region});
     }
 
     function addEmployee(name, regions){
@@ -29,8 +21,7 @@ define(['angular'], function(angular){
     }
     return {
       getAll : getAll,
-      addRegion : addRegion,
-      removeRegion : removeRegion,
+      setRegion : setRegion,
       addEmployee : addEmployee,
       removeEmployee : removeEmployee
     };

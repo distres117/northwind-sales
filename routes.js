@@ -23,7 +23,7 @@ router.route('/')
 router.route('/:id')
     .put(function(req,res,next){
         var region = req.body.region;
-        if (req.query.remove)
+        if (req.employee.regions.indexOf(region) > -1)
             req.employee.regions.remove(region);
         else
             req.employee.regions.push(region);

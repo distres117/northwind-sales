@@ -10,7 +10,7 @@ describe('Routes tests', function(){
     var newEmp;
    it('Gets all employees', function(){
        return request.get('/api').then(function(res){
-          expect(res.body.length).to.equal(4); 
+          expect(res.body.length).to.equal(4);
        });
    });
    it("creates new employee", function(){
@@ -23,13 +23,13 @@ describe('Routes tests', function(){
    it('adds region to employee', function(){
       return request.put('/api/' + newEmp._id).send({region: 'N'})
       .then(function(res){
-         expect(res.body.regions[0]).to.equal('N'); 
-      }); 
+         expect(res.body.regions[0]).to.equal('N');
+      });
    });
    it('removes region from employee', function(){
-      return request.put('/api/'+ newEmp._id + '?remove=true').send({region: 'N'})
+      return request.put('/api/'+ newEmp._id).send({region: 'N'})
       .then(function(res){
-         expect(res.body.regions.length).to.equal(0); 
+         expect(res.body.regions.length).to.equal(0);
       });
    });
    it('removes employee', function(){
@@ -38,9 +38,9 @@ describe('Routes tests', function(){
           return request.get('/api'); 
        })
        .then(function(res){
-          expect(res.body.length).to.equal(4); 
+          expect(res.body.length).to.equal(4);
        });
-   })
+   });
    it('test error handler', function(){
       return request.get('/api/willfail').expect(404);
    });

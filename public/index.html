@@ -7,6 +7,7 @@
     <title>Northwind-Sales</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="form-group has-error">
                                 <input type="text" placeholder="name" ng-model="newEmployee.name">
-                                <button class="btn btn-primary pull-right" type="button" ng-click="addNew()">+Add </button>
+                                <button class="btn btn-primary pull-right" ng-disabled="!getActiveRegions().length" type="button" ng-click="addNew()">+Add </button>
                             </div>
                         </div>
                     </div>
@@ -32,25 +33,24 @@
                 <div class="panel-footer">
                     <div class="row" id="region_btns">
                         <div class="col-md-12" id="region">
-                            <button ng-repeat="(key,value) in regions" ng-click="toggle(key)" ng-class="{active: newEmployee.regions[key]}" class="btn btn-default btn-sm" type="button">{{value}}</button>
+                            <button ng-repeat="(key,value) in regions" ng-click="newEmployee.regions[key] = !newEmployee.regions[key]" ng-class="{active: newEmployee.regions[key]}" class="btn btn-default btn-sm" type="button">{{value}}</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-12" ng-repeat="employee in employees">
-            <div class="panel panel-success">
+            <div class="panel" ng-class="{'panel-success' : employee.regions.length >=3, 'panel-danger': !employee.regions.length, 'panel-default': employee.regions.length && employee.regions.length < 3}">
                 <div class="panel-heading">
-                    <h3 class="panel-title" ng-click="remove(employee._id)" id="panel-title">{{employee.name}}<button class="btn btn-danger btn-sm pull-right" type="button" id="delete-btn">Delete </button></h3>
+                    <h3 class="panel-title" id="panel-title">{{employee.name}}
+                      <button ng-click="remove(employee._id)" ng-disabled="employee.regions.length" class="btn btn-danger btn-sm pull-right" type="button" id="delete-btn">Delete </button>
+                    </h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
                     <div class="row" id="region_btns">
                         <div class="col-md-12" id="region">
-                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('n') > -1}" type="button">North </button>
-                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('s') > -1}" type="button">South </button>
-                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('e') > -1}" type="button">East </button>
-                            <button class="btn btn-default btn-sm" ng-class="{'active' : employee.regions.indexOf('w') > -1}" type="button">West </button>
+                            <button class="btn btn-default btn-sm" ng-click="changeRegions(employee._id,key)" ng-class="{'active' : employee.regions.indexOf(key) > -1}" type="button" ng-repeat="(key, value) in regions">{{value}}</button>
                         </div>
                     </div>
                 </div>
