@@ -3,6 +3,7 @@ var express = require('express'),
     app = express(),
     routes = require('./routes');
 
+app.use(require('serve-favicon')(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
 app.use(require('morgan')('dev'));
 app.use(express.static('public'));

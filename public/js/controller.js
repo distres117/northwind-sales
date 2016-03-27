@@ -19,6 +19,9 @@ define(['angular'], function(angular){
           $scope.employees = employees;
         });
     }
+    $scope.isIn = function(employee, region){
+      return employee.regions.indexOf(region) > -1;
+    };
 
     $scope.getActiveRegions = function(){
       return Object.keys($scope.newEmployee.regions).filter(function(key){
