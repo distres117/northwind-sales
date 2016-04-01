@@ -4,7 +4,7 @@ define(['angular'], function(angular){
 
     function getAll(){
       return $http.get('/api').then(function(res){
-        return res.data;
+        return res.data;//here is where I ended up mapping my results so that I created client side objects which methods-- employee.fullSchedule(), employee.notWorking().. employee.canDelete().. etc
       });
     }
 

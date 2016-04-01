@@ -5,7 +5,7 @@ var employeeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    regions: []
+    regions: []//could this have been an array of strings
     
 });
 

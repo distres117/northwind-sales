@@ -1,0 +1,2 @@
+- good stuff
+- how about putting some validation logic in scope - or creating a client side object which you could query

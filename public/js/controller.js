@@ -29,7 +29,6 @@ define(['angular'], function(angular){
       });
     };
     $scope.addNew = function(){
-      var name = $scope.newEmployee.name;
       var regions =  $scope.getActiveRegions();
       ApiFactory.addEmployee($scope.newEmployee.name, regions ).then(function(){
         getNew();
